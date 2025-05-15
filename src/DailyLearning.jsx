@@ -6,9 +6,14 @@ import lessonData from './Data/Lesson.json';
 
 export default function DailyLearning() {
     const navigate = useNavigate();
-    const { completedDays, markDayComplete } = useLevel();
+    const { completedDays, markDayComplete, currentLevel, setCurrentLevel } = useLevel();
 
-    const [selectedLevel, setSelectedLevel] = useState('Beginner');
+    const [selectedLevel, setSelectedLevelState] = useState(currentLevel || 'Beginner');
+
+    const handleLevelChange = (level) => {
+        setSelectedLevelState(level);
+        setCurrentLevel(level); // context에 반영
+    };
 
     const levelLessons = lessonData[selectedLevel] || [];
 
@@ -30,6 +35,7 @@ export default function DailyLearning() {
             if (!completedDays[selectedLevel]?.includes(index + 1)) {
                 markDayComplete(selectedLevel, index + 1);
             }
+            navigate(`/lesson/${selectedLevel}/${index + 1}`);
         }
     };
 
@@ -43,21 +49,21 @@ export default function DailyLearning() {
             <div className="level-selector">
                 <button
                     className={`level-btn beginner ${selectedLevel === 'Beginner' ? 'active' : ''}`}
-                    onClick={() => setSelectedLevel('Beginner')}
+                    onClick={() => handleLevelChange('Beginner')}
                 >
                     🐥 Beginner Level
                     <span className="level-desc">Basic Conversation<br />& Expression Expansion</span>
                 </button>
                 <button
                     className={`level-btn intermediate ${selectedLevel === 'Intermediate' ? 'active' : ''}`}
-                    onClick={() => setSelectedLevel('Intermediate')}
+                    onClick={() => handleLevelChange('Intermediate')}
                 >
                     🦤 Intermediate Level
                     <span className="level-desc">Expressing Opinions<br />& Constructing Complex Sentence</span>
                 </button>
                 <button
                     className={`level-btn advanced ${selectedLevel === 'Advanced' ? 'active' : ''}`}
-                    onClick={() => setSelectedLevel('Advanced')}
+                    onClick={() => handleLevelChange('Advanced')}
                 >
                     🦜 Advanced Level
                     <span className="level-desc">Natural Expressions<br />& Conveying Complex Thoughts</span>

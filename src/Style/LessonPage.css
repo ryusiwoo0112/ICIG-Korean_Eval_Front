@@ -1,0 +1,69 @@
+.lesson-page {
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+    background-color: #fff;
+}
+
+.lesson-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.lesson-header h2 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.back-button,
+.close-button {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.lesson-section {
+    background-color: #f8f8f8;
+    padding: 16px;
+    border-radius: 12px;
+    margin-bottom: 16px;
+}
+
+.tutor-box {
+    background-color: #eee;
+}
+
+.user-box .user-bubble {
+    background-color: #daf5ff;
+    padding: 10px 14px;
+    border-radius: 16px;
+    display: inline-block;
+}
+
+.korean-sentence {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.input-area {
+    display: flex;
+    margin-top: 20px;
+}
+
+.input-area input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.input-area button {
+    padding: 10px;
+    margin-left: 8px;
+    border-radius: 8px;
+    background-color: #ffd500;
+    border: none;
+    cursor: pointer;
+}
